@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudBox - Cloud File Storage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            ☁️ CloudBox
+        </div>
+
+        <div class="user">
+            <span>Welcome, User</span>
+            <div class="avatar">U</div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <button class="upload-btn" onclick="openFilePicker()">
+                + Upload File
+            </button>
+
+            <nav>
+                <a href="#" class="active">🏠 Dashboard</a>
+                <a href="#">📁 My Files</a>
+                <a href="#">⭐ Favorites</a>
+                <a href="#">🗑️ Trash</a>
+            </nav>
+
+            <div class="storage-box">
+                <h4>Storage</h4>
+
+                <div class="storage-bar">
+                    <div id="storageProgress"></div>
+                </div>
+
+                <p id="storageText">0 MB of 100 MB used</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <div class="page-header">
+                <div>
+                    <h1>My Files</h1>
+                    <p>Manage your cloud files</p>
+                </div>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search files..."
+                    onkeyup="searchFiles()"
+                >
+            </div>
+
+            <section class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">📁</div>
+                    <div>
+                        <h3 id="fileCount">0</h3>
+                        <p>Total Files</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">☁️</div>
+                    <div>
+                        <h3 id="storageUsed">0 MB</h3>
+                        <p>Storage Used</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">📊</div>
+                    <div>
+                        <h3>100 MB</h3>
+                        <p>Total Storage</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="upload-area" id="dropArea">
+                <div class="upload-icon">☁️</div>
+                <h2>Upload your files</h2>
+                <p>Drag & drop files here or click the button below</p>
+
+                <button onclick="openFilePicker()">
+                    Choose Files
+                </button>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    multiple
+                    hidden
+                    onchange="handleFiles(this.files)"
+                >
+            </section>
+
+            <section class="files-section">
+                <div class="section-header">
+                    <h2>Recent Files</h2>
+                    <span id="fileStatus">0 files</span>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="fileTableBody">
+                        </tbody>
+                    </table>
+
+                    <div id="emptyMessage" class="empty">
+                        <div>📂</div>
+                        <h3>No files found</h3>
+                        <p>Upload your first file to get started.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 CloudBox | Cloud Computing File Storage</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
